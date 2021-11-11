@@ -1,6 +1,6 @@
 import {bindable } from 'aurelia-framework';
 import {inject} from 'aurelia-framework';
-import {AuthService} from 'aurelia-auth';
+import {AuthService} from './utils/auth-service';
 import {BindingEngine} from 'aurelia-framework';
 
 @inject(AuthService, BindingEngine)
@@ -16,9 +16,7 @@ export class NavBar {
         this.subscription = bindingEngine.propertyObserver(this, 'isAuthenticated')
             .subscribe((newValue, oldValue) => {
                 if (this.isAuthenticated) {
-                    this.auth.getMe().then(data => {
-                        return this.displayName = data.displayName;
-                    });
+
                 }
             });
     }

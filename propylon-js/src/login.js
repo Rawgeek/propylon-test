@@ -1,12 +1,14 @@
-import {AuthService} from 'aurelia-auth';
 import {inject} from 'aurelia-framework';
-@inject(AuthService )
+import {AuthService} from './utils/auth-service';
 
+@inject(AuthService )
 export class Login {
   constructor(auth) {
     this.auth = auth;
     this.username_error = '';
     this.password_error = '';
+    this.remember = false;
+
   };
 
   username = '';
@@ -18,28 +20,31 @@ export class Login {
     ctrl.password_error = null;
 
     return this.auth.login({
-        username: this.username,
-        password: this.password
-      })
+        username: ctrl.username,
+        password: ctrl.password
+      }, ctrl.remember)
       .then(response => {
-        console.log("success logged " + response);
+        console.log("success logged ", response);
       })
-      .catch(err => {
-        err.json().then(function(e) {
-          if (e.detail) {
-            ctrl.password_error = e.detail;
-          } else if (e.password) {
-            ctrl.password_error = e.password;
-          } else if (e.username) {
-            ctrl.username_error = e.username;
-          }
-        });
+      .catch(e => {
+        console.log(e)
+        if (e.detail) {
+          ctrl.password_error = e.detail;
+        } else if (e.password) {
+          ctrl.password_error = e.password;
+        } else if (e.username) {
+          ctrl.username_error = e.username;
+        }
       });
   };
 
-  authenticate(name) {
-    return this.auth.authenticate(name, false, null)
-      .then((response) => {});
-
-  }
+  // authenticate(name) {
+  //   let ctrl = this
+  //   return this.auth.authenticate(name, false, null)
+  //     .then((response) => {
+  //       console.log(response, ctrl.remember)
+  //       setCookie('X-CSRFToken', "test")
+  //     });
+  //
+  // }
 }

@@ -15,8 +15,8 @@ export class Home{
 
   configureRouter(config, router){
     config.map([
-        { route: '',  moduleId: PLATFORM.moduleName('document-no-selection')},
-        { route: ':id',  moduleId: PLATFORM.moduleName('document-detail'), name: 'documentDetails'},
+        { route: '',  moduleId: PLATFORM.moduleName('documents/document-no-selection')},
+        { route: ':id',  moduleId: PLATFORM.moduleName('documents/document-detail'), name: 'documentDetails'},
   		]);
 
     this.router = router;

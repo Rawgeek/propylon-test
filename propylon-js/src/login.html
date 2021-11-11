@@ -22,7 +22,7 @@ margin: auto;">
 
         <div class="form-floating mb-3">
           <input type="text" class="form-control ${username_error ? 'is-invalid' : ''}" id="floatingInput" placeholder="username" value.bind="username">
-          <label for="floatingInput">Email address</label>
+          <label for="floatingInput">Username</label>
           <div class="invalid-feedback" style="text-align: left">${username_error}</div>
         </div>
         <div class="form-floating mb-3">
@@ -31,9 +31,9 @@ margin: auto;">
           <div class="invalid-feedback" style="text-align: left">${password_error}</div>
         </div>
 
-        <div class="checkbox mb-3">
+        <div class="checkbox mb-3 style="text-align: left">
           <label>
-            <input type="checkbox" value="remember-me" disabled> Remember me
+            <input type="checkbox" value="remember-me" value.bind="remember"> Remember me
           </label>
         </div>
         <button class="w-100 btn btn-lg btn-primary" type="submit" click.delegate="login()">Sign in</button>

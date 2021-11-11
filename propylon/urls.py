@@ -18,7 +18,7 @@ from django.conf.urls.static import static
 from django.conf import settings
 from django.contrib import admin
 from django.urls import path
-from .views import HomePageView
+from .views import HomePageView, LoginView, Logout
 from documents.views import DocumentsDownloadView
 
 from rest_framework_simplejwt.views import (
@@ -30,6 +30,8 @@ urlpatterns = [
 
     path('admin/', admin.site.urls),
 
+    url(r'api/login/$', LoginView.as_view(), name='login_view'),
+    url(r'api/logout/$', Logout.as_view(), name='logout_view'),
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 

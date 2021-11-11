@@ -246,8 +246,6 @@ module.exports = ({ production }, { analyze, hmr, port, host }) => ({
     new AureliaPlugin(),
     new ModuleDependenciesPlugin({
       'aurelia-testing': ['./compile-spy', './view-spy'],
-      "aurelia-authentication": [ "./authFilterValueConverter" ],
-      'aurelia-auth': ['./auth-filter']
     }),
     new HtmlWebpackPlugin({
       template: 'index.ejs',
