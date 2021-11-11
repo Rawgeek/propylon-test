@@ -1,0 +1,14 @@
+<template>
+
+  <require from='./nav-bar'></require>
+
+  <nav-bar class="header p-3 bg-dark text-white" router.bind="router"></nav-bar>
+
+  <main class="flex-shrink-0">
+    <router-view></router-view>
+  </main>
+
+  <require from='./footer'></require>
+
+  <footer class="footer py-3 mt-auto"></footer>
+</template>

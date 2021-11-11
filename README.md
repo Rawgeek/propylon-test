@@ -1,9 +1,5 @@
 # Propylon Technical Assesment
 
-[![codecov](https://codecov.io/gh/Floship/jackrabbit3/branch/staging/graph/badge.svg?token=ai27voA4SL)](https://codecov.io/gh/Floship/jackrabbit3)
-
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
-
 Web application that allows users to store and later retrieve files at a specified URL.
 
 ## Setup

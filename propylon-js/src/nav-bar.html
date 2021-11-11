@@ -1,0 +1,67 @@
+<template>
+    <div class="container">
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          <li repeat.for="row of router.navigation | authFilter: isAuthenticated" class="">
+            <a class="nav-link px-2 ${row.isActive ? 'text-secondary' : 'text-white'}" href.bind="row.href">${row.title}</a>
+          </li>
+        </ul>
+        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+          <input type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search">
+        </form>
+
+        <div if.bind="!isAuthenticated" class="text-end">
+          <a href="/#/login" class="btn btn-outline-light me-2">Login</a>
+          <a href="/#/signup" class="btn btn-warning disabled" tooltip="Temporary unavailable">Sign-up</a>
+        </div>
+        <div if.bind="isAuthenticated" class="text-end">
+          <a href="" class="btn btn-outline-light me-2 disabled">Welcome User</a>
+          <a href="/#/logout" class="btn btn-warning">Logout</a>
+        </div>
+      </div>
+    </div>
+  <!-- <nav class="navbar navbar-light bg-light border-bottom fixed-top" role="navigation">
+    <a class="navbar-brand" href="#">
+        <i class="fa fa-user"></i>
+        <span>Propylon</span>
+      </a>
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle Navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">
+        <i class="fa fa-home"></i>
+        <span>${router.title}</span>
+      </a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li repeat.for="row of router.navigation | authFilter: isAuthenticated" class="${row.isActive ? 'active' : ''}">
+          <a data-toggle="collapse" data-target="#bs-example-navbar-collapse-1.in" href.bind="row.href">${row.title}</a>
+        </li>
+      </ul>
+
+      <ul if.bind="!isAuthenticated" class="nav navbar-nav navbar-right">
+      <li><a href="/#/login">Login</a></li>
+      <li><a href="/#/signup">Sign up</a></li>
+
+      </ul>
+      <ul if.bind="isAuthenticated" class="nav navbar-nav navbar-right">
+        <li><a href="/#/profile">Welcome ${displayName}</a></li>
+        <li><a href="/#/logout">Logout</a></li>
+         <li><a href="/#/users">Github Users</a></li>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li class="loader" if.bind="router.isNavigating">
+          <i class="fa fa-spinner fa-spin fa-2x"></i>
+        </li>
+      </ul>
+    </div>
+  </nav> -->
+</template>

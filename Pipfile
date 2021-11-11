@@ -1,0 +1,14 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[packages]
+django = "*"
+djangorestframework = "*"
+django-reversion = "*"
+djangorestframework-simplejwt = "*"
+django-webpack-loader = "*"
+
+[requires]
+python_full_version = "3.9.7"

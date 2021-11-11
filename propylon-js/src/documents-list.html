@@ -1,0 +1,17 @@
+<template>
+  <require from="./date-format"></require>
+
+   <div class="document-list">
+     <div class="list-group">
+       <a
+         repeat.for="document of documents"
+         class="list-group-item list-group-item-action ${document.id === $parent.selectedId ? 'active' : ''}"
+         route-href="route: documentDetails; params.bind: {id:document.id}"
+         click.delegate="$parent.select(document)"
+       >
+         <strong>${document.url}</strong><br>
+         <small>${document.created | dateFormat}</small>
+       </a>
+     </div>
+   </div>
+ </template>

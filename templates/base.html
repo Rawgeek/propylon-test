@@ -1,0 +1,16 @@
+{% load render_bundle from webpack_loader %}
+<!doctype html>
+<html lang="en" {% block app %}ng-app="app"{% endblock %}>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <base href="">
+    <title>{% block title %}{% endblock %}</title>
+    <!-- Prefetch DNS for external assets. -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    {% render_bundle 'app' %}
+  </head>
+  <body aurelia-app="main">
+  </body>
+</html>
