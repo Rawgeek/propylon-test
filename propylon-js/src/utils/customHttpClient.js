@@ -15,7 +15,6 @@ export class CustomHttpClient extends HttpClient {
           }
         })
 
-        //still we can augment the custom HttpClient with own interceptors
         .withInterceptor({
           request(request) {
             console.log(`Requesting ${request.method} ${request.url}`, request);
@@ -23,7 +22,11 @@ export class CustomHttpClient extends HttpClient {
           },
           response(response) {
             console.log(`Received ${response.status} ${response.url}`);
-            return response; // you can return a modified Response
+            if (response.status >= 200 && response.status < 400) {
+              return response.json().catch(error => null);
+            }
+
+            throw response;
           }
         });
     });

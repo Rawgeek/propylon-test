@@ -7,7 +7,6 @@ export class Login {
     this.auth = auth;
     this.username_error = '';
     this.password_error = '';
-    this.remember = false;
 
   };
 
@@ -22,29 +21,26 @@ export class Login {
     return this.auth.login({
         username: ctrl.username,
         password: ctrl.password
-      }, ctrl.remember)
-      .then(response => {
-        console.log("success logged ", response);
       })
-      .catch(e => {
-        console.log(e)
-        if (e.detail) {
-          ctrl.password_error = e.detail;
-        } else if (e.password) {
-          ctrl.password_error = e.password;
-        } else if (e.username) {
-          ctrl.username_error = e.username;
-        }
+      .then(response => {
+        window.location.href = "/#/"
+      })
+      .catch(err => {
+        err.json().then(function(e) {
+          if (e.detail) {
+            ctrl.password_error = e.detail;
+          } else if (e.password) {
+            ctrl.password_error = e.password;
+          } else if (e.username) {
+            ctrl.username_error = e.username;
+          }
+        });
       });
   };
 
-  // authenticate(name) {
-  //   let ctrl = this
-  //   return this.auth.authenticate(name, false, null)
-  //     .then((response) => {
-  //       console.log(response, ctrl.remember)
-  //       setCookie('X-CSRFToken', "test")
-  //     });
-  //
-  // }
+  activate() {
+    if (this.auth.isAuthenticated()) {
+      window.location.href = "/#/"
+    }
+  }
 }

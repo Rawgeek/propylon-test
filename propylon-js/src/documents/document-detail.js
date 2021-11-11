@@ -13,7 +13,6 @@ export class DocumentDetail {
     this.routeConfig = routeConfig;
 
     return this.http.fetch(`${this.url}${params.id}`)
-      .then(response => response.json())
       .then(document => {
         this.document = document
         this.routeConfig.navModel.setTitle(document.url);

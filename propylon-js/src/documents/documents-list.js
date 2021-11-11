@@ -11,14 +11,12 @@ export class DocumentsList {
 
   created() {
     return this.http.fetch(this.url)
-     .then(response =>  response.json())
      .then(d => {
        this.documents = d;
      });
   }
 
   select(document) {
-    console.log(document)
     this.selectedId = document.id;
     return true;
   }

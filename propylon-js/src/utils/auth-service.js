@@ -1,8 +1,9 @@
 import {inject} from 'aurelia-framework';
-import {HttpClient, json} from 'aurelia-fetch-client';
+import {_, json} from 'aurelia-fetch-client';
+import {CustomHttpClient} from './customHttpClient';
 import {getCookie, deleteCookie} from './cookies';
 
-@inject(HttpClient)
+@inject(CustomHttpClient)
 export class AuthService {
   _cookie_name = 'csrftoken';
 
@@ -15,16 +16,14 @@ export class AuthService {
     return getCookie(this._cookie_name)
   }
 
-  login(params, remember) {
+  login(params) {
     self = this;
     return this.http.fetch('api/login/', {
       method: 'post',
       body: json(params)
-    }).then(response => {
-      window.location.href = "/#/";
-      return response
     })
   }
+
 
   logout(redirect) {
     self = this;
