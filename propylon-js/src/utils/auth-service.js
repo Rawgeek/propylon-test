@@ -1,6 +1,5 @@
 import {inject} from 'aurelia-framework';
-import {_, json} from 'aurelia-fetch-client';
-import {CustomHttpClient} from './customHttpClient';
+import {CustomHttpClient, json} from './customHttpClient';
 import {getCookie, deleteCookie} from './cookies';
 
 @inject(CustomHttpClient)
@@ -13,7 +12,7 @@ export class AuthService {
   }
 
   isAuthenticated() {
-    return getCookie(this._cookie_name)
+    return !!getCookie(this._cookie_name)
   }
 
   login(params) {

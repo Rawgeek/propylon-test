@@ -5,20 +5,27 @@ import {CustomHttpClient} from '../utils/customHttpClient';
 export class DocumentsList {
   url = 'api/documents/';
 
-  constructor(http){
+  documents = [];
+
+  constructor(http) {
     this.http = http;
   }
 
   created() {
+    let self = this
     return this.http.fetch(this.url)
-     .then(d => {
-       this.documents = d;
+     .then(documents => {
+       self.documents = documents
      });
   }
 
   select(document) {
     this.selectedId = document.id;
     return true;
+  }
+
+  refresh() {
+    return this.created()
   }
 
 }

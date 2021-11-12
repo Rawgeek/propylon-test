@@ -9,7 +9,7 @@
          route-href="route: documentDetails; params.bind: {id:document.id}"
          click.delegate="$parent.select(document)"
        >
-         <strong>${document.url}</strong><br>
+         <strong>${document.download_url}</strong><br>
          <small>${document.created | dateFormat}</small>
        </a>
      </div>

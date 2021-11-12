@@ -29,6 +29,8 @@ export class Login {
         err.json().then(function(e) {
           if (e.detail) {
             ctrl.password_error = e.detail;
+          } else if (e.non_field_errors) {
+            ctrl.password_error = e.non_field_errors;
           } else if (e.password) {
             ctrl.password_error = e.password;
           } else if (e.username) {

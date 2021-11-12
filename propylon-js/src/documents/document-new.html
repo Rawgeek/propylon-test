@@ -1,0 +1,34 @@
+<template>
+  <require from="../utils/date-format"></require>
+
+  <div class="card">
+    <div class="card-header text-white bg-primary">
+      Document
+    </div>
+    <div class="card-body">
+      <form role="form">
+        <div class="form-group row mb-3">
+          <label class="col-md-3 col-form-label">URL</label>
+          <div class="col-md-9">
+            <input type="text" placeholder="" class="form-control" value.bind="document.download_url">
+          </div>
+        </div>
+        <div class="form-group row mb-3">
+          <label class="col-md-3 col-form-label">File</label>
+          <div class="col-md-9">
+            <input type="file" placeholder="" class="form-control" value.bind="document.attachment_file">
+          </div>
+        </div>
+        <div class="form-group row mb-3">
+          <label class="col-md-3 col-form-label">Created</label>
+          <div class="col-md-9">
+            <input type="text" disabled placeholder="" class="form-control" value.bind="document.created | dateFormat">
+          </div>
+        </div>
+
+      <div class="d-grid mx-auto">
+        <button class="btn btn-success float-right " click.delegate="save()" disabled.bind="!canSave">Create</button>
+      </div>
+    </div>
+  </div>
+</template>

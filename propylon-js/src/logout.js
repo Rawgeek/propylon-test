@@ -9,6 +9,6 @@ export class Logout{
 	};
 
 	 activate(){
-		this.auth.logout("#/login")
+		this.auth.logout("/#/login")
 	}
 }

@@ -4,7 +4,7 @@ import {AuthService} from './utils/auth-service';
 import {BindingEngine} from 'aurelia-framework';
 
 @inject(AuthService, BindingEngine)
-export class NavBar {
+export class Header {
     _isAuthenticated = false;
     displayName = "";
     @bindable router = null;

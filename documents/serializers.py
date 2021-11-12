@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from rest_framework import serializers
 from reversion.models import Revision, Version
 from .models import Document
@@ -7,7 +8,7 @@ class DocumentVersionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Document
         fields = (
-            'url',
+            'download_url',
             'attachment_file',
         )
 
@@ -37,6 +38,7 @@ class VersionSerializer(serializers.ModelSerializer):
     def get_download_url(self, obj):
         return obj.download_url
 
+
 class DocumentSerializer(serializers.ModelSerializer):
     versions = VersionSerializer(many=True, read_only=True)
 
@@ -44,7 +46,7 @@ class DocumentSerializer(serializers.ModelSerializer):
         model = Document
         fields = (
             'id',
-            'url',
+            'download_url',
             'versions',
             'created'
         )
@@ -57,17 +59,20 @@ class DocumentSerializer(serializers.ModelSerializer):
 
 
 class SimpleDocumentSerializer(serializers.ModelSerializer):
-
+    user_id = serializers.PrimaryKeyRelatedField(queryset=User.objects.all(),
+                                                      source='user', required=False,
+                                                      write_only=True)
     class Meta:
         model = Document
         fields = (
             'id',
-            'url',
-            'created'
+            'download_url',
+            'created',
+            'user_id'
         )
 
         read_only_fields = (
             'id',
-            'url',
+            'download_url',
             'created'
         )

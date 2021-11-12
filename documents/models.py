@@ -26,17 +26,17 @@ class Document(models.Model):
     """
 
     user = models.ForeignKey(User, on_delete=models.PROTECT)
-    url = models.CharField(max_length=1024, db_index=True)
+    download_url = models.CharField(max_length=1024, db_index=True)
     attachment_file = models.FileField(upload_to=user_directory_path)
     created = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        unique_together = ('user', 'url')
+        unique_together = ('user', 'download_url')
         ordering = ['-id']
 
     def __str__(self):
         return '{} : {}'.format(
-            user.username, self.url
+            self.user_id, self.download_url
         )
 
     @property
@@ -46,6 +46,6 @@ class Document(models.Model):
             .order_by('-id')\
             .annotate(revision_number = Window(expression=RowNumber()) - 1)\
             .annotate(download_url = Concat(
-                Value(f'{self.url}?revision='), F('revision_number'),
+                Value(f'{self.download_url}?revision='), F('revision_number'),
                 output_field=models.CharField()
             ))

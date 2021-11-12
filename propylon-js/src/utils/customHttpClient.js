@@ -1,5 +1,7 @@
 import {HttpClient} from 'aurelia-fetch-client';
 import {inject} from 'aurelia-framework';
+import {getCookie} from './cookies'
+export {json} from 'aurelia-fetch-client';
 
 @inject()
 export class CustomHttpClient extends HttpClient {
@@ -11,13 +13,16 @@ export class CustomHttpClient extends HttpClient {
         .withDefaults({
           credentials: 'same-origin',
           headers: {
-            'Accept': 'application/json'
+            'Accept': 'application/json',
           }
         })
 
         .withInterceptor({
           request(request) {
             console.log(`Requesting ${request.method} ${request.url}`, request);
+
+
+            request.headers.set("X-CSRFToken", getCookie('csrftoken'));
             return request;
           },
           response(response) {

@@ -20,7 +20,7 @@ class DocumentsDownloadView(DetailView):
         revision_number = int(request.GET.get('revision', 0))
 
         try:
-            document = self.model.objects.get(url=request.path, user=request.user)
+            document = self.model.objects.get(download_url=request.path, user=request.user)
         except Document.DoesNotExist:
             return HttpResponseNotFound('<h1>Page not found</h1>')
         print(revision_number)
@@ -52,3 +52,6 @@ class DocumentsListViewSet(DocumentViewSet):
 
     def get_serializer_class(self):
         return self.serializers_map.get(self.request.method, self.serializers_map['default'])
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
