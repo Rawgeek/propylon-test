@@ -44,11 +44,12 @@ $ pyenv install
 
 ### Next:
 ```
-$ pipenv install
+$ pipenv install --dev
 $ pipenv shell
 $ ./manage.py migrate
-$ ./manage.py runserver
 $ ./manage.py createsuperuser
+$ ./manage.py runserver
+
 ```
 
 Go to http://localhost:8000 for user view and http://localhost:8000/admin/ for admin view
@@ -57,3 +58,10 @@ Go to http://localhost:8000 for user view and http://localhost:8000/admin/ for a
 ```
 $ python manage.py test
 ```
+
+## TODO / Known Issues
+
+* List of documents isn't updated when adding new / deleting documents of Frontend
+* Validate url available to users against system reserved urls
+* Better validation for files
+* Upgrade multipart file upload to json format (possibly use base64 or similar to pass file information. Ideally use separate service for file uploading like Amazon S3)
