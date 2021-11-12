@@ -1,7 +1,7 @@
 import {inject} from 'aurelia-framework';
 import {AuthService} from './utils/auth-service';
 
-@inject(AuthService )
+@inject(AuthService)
 export class Login {
   constructor(auth) {
     this.auth = auth;
@@ -30,7 +30,7 @@ export class Login {
           if (e.detail) {
             ctrl.password_error = e.detail;
           } else if (e.non_field_errors) {
-            ctrl.password_error = e.non_field_errors;
+            ctrl.password_error = e.non_field_errors_val;
           } else if (e.password) {
             ctrl.password_error = e.password;
           } else if (e.username) {

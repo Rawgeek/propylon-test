@@ -10,13 +10,15 @@
         <div class="form-group row mb-3">
           <label class="col-md-3 col-form-label">URL</label>
           <div class="col-md-9">
-            <input type="text" placeholder="" class="form-control" value.bind="document.download_url">
+            <input type="text" placeholder="" class="form-control ${errors.download_url ? 'is-invalid' : ''}" value.bind="document.download_url">
+            <div class="invalid-feedback">${errors.download_url}</div>
           </div>
         </div>
         <div class="form-group row mb-3">
           <label class="col-md-3 col-form-label">File</label>
           <div class="col-md-9">
-            <input type="file" placeholder="" class="form-control" value.bind="document.attachment_file">
+            <input type="file" placeholder="" class="form-control ${errors.attachment_file ? 'is-invalid' : ''}" files.bind="document.attachment_file">
+            <div class="invalid-feedback">${errors.attachment_file}</div>
           </div>
         </div>
         <div class="form-group row mb-3">
@@ -26,6 +28,8 @@
           </div>
         </div>
 
+
+      </form>
       <div class="d-grid mx-auto">
         <button class="btn btn-success float-right " click.delegate="save()" disabled.bind="!canSave">Create</button>
       </div>

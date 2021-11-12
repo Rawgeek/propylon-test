@@ -10,5 +10,9 @@ django-reversion = "*"
 djangorestframework-simplejwt = "*"
 django-webpack-loader = "*"
 
+[dev-packages]
+factory-boy = "*"
+freezegun = "*"
+
 [requires]
 python_full_version = "3.9.7"

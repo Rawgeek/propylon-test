@@ -1,32 +1,19 @@
 import {bindable } from 'aurelia-framework';
 import {inject} from 'aurelia-framework';
 import {AuthService} from './utils/auth-service';
-import {BindingEngine} from 'aurelia-framework';
 
-@inject(AuthService, BindingEngine)
+@inject(AuthService)
 export class Header {
     _isAuthenticated = false;
-    displayName = "";
+
     @bindable router = null;
     subscription = {};
-    constructor(auth, bindingEngine) {
+    constructor(auth) {
         this.auth = auth;
-        this.bindingEngine = bindingEngine;
-        this._isAuthenticated = this.auth.isAuthenticated();
-        this.subscription = bindingEngine.propertyObserver(this, 'isAuthenticated')
-            .subscribe((newValue, oldValue) => {
-                if (this.isAuthenticated) {
-
-                }
-            });
     }
 
     get isAuthenticated() {
         return this.auth.isAuthenticated();
-    }
-
-    deactivate() {
-        this.subscription.dispose();
     }
 
 }

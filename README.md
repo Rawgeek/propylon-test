@@ -18,8 +18,20 @@ $ git clone git@github.com:rawgeek/propylon.git
 $ cd propylon/propylon-js
 $ nvm install
 $ npm install
+```
+
+If you wish to only generate a fresh front-end build, run:
+```
+$ npm run build
 $ cd ..
 ```
+
+To run in front-end in development mode, run (currently isn't working correctly for :8000 port, use port :8080):
+```
+$ npm start
+```
+Open new terminal and continue below
+
 
 ### If on Mac OS X Mojave:
 ```
@@ -36,31 +48,12 @@ $ pipenv install
 $ pipenv shell
 $ ./manage.py migrate
 $ ./manage.py runserver
+$ ./manage.py createsuperuser
 ```
 
-If you wish to only generate a fresh front-end build, run:
-```
-$ npm run build
-```
-
-To run in front-end in development mode, run:
-```
-$ npm start
-```
+Go to http://localhost:8000 for user view and http://localhost:8000/admin/ for admin view
 
 ## Unit Tests
 ```
 $ python manage.py test
-```
-
-### Test login:
-```
-login: user
-password: qr0p!l0N
-```
-
-### Admin user:
-```
-login: admin
-password: qr0p!l0N
 ```

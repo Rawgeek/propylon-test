@@ -10,7 +10,7 @@ detail_actions = {'get': 'retrieve', 'delete': 'destroy', 'put': 'update', 'patc
 
 urlpatterns = [
     url(r'^$', DocumentsListViewSet.as_view(list_actions), name='list'),
-    url(r'^(?P<pk>\d+)$', DocumentViewSet.as_view(detail_actions), name='detail'),
+    url(r'^(?P<pk>\d+)$', DocumentViewSet.as_view(detail_actions), name='details'),
 ]
 
 router = SimpleRouter()

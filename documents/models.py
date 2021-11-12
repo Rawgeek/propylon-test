@@ -49,3 +49,8 @@ class Document(models.Model):
                 Value(f'{self.download_url}?revision='), F('revision_number'),
                 output_field=models.CharField()
             ))
+
+    def get_version(self, version_number):
+        return Version.objects\
+            .get_for_object(self)\
+            .order_by('id')[version_number]

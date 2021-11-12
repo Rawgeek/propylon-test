@@ -1,7 +1,7 @@
 import {AuthorizeStep} from './utils/authorize-step';
 import {inject} from 'aurelia-framework';
-import {Router} from 'aurelia-router';
 import {PLATFORM} from 'aurelia-pal';
+import {Router} from 'aurelia-router';
 
 @inject(Router)
 export default class{
@@ -17,7 +17,6 @@ export default class{
 			config.map([
 				{ route: ['','home'],  moduleId: PLATFORM.moduleName('home'),      name: 'home', nav: true, title:'Home' },
         { route: 'documents',  moduleId: PLATFORM.moduleName('documents/documents'),      name: 'documents', nav: true, title:'My documents', auth: true },
-        // { route: 'signup',        moduleId: PLATFORM.moduleName('signup'),       nav: false, title:'Signup' },
 				{ route: 'login',        moduleId: PLATFORM.moduleName('login'),       nav: false, title:'Login' },
 				{ route: 'logout',        moduleId: PLATFORM.moduleName('logout'),       nav: false, title:'Logout' },
 

@@ -31,13 +31,13 @@ export class DocumentDetail {
 
   delete() {
     this.http.fetch(`api/documents/${this.document.id}`, {
-      method: 'DELETE',
-    })
-    .then(document => {
-      this.documents.refresh().then(res => {
-        window.location.href = `/#/documents/`
+        method: 'DELETE',
       })
-    });
+      .then(document => {
+        this.documents.refresh().then(res => {
+          window.location.href = `/#/documents/`
+        })
+      });
   }
 
   save() {
@@ -47,21 +47,17 @@ export class DocumentDetail {
     form.append('download_url', this.document.download_url)
 
     this.http.fetch(`api/documents/${this.document.id}`, {
-      method: 'PUT',
-      body: form
-    })
-    .then(document => {
-      this.http.fetch(`api/documents/${this.document.id}`, {
-        method: 'GET',
-      }).then(document => {
-        this.document = document
+        method: 'PUT',
+        body: form
       })
+      .then(document => {
+        this.http.fetch(`api/documents/${this.document.id}`, {
+          method: 'GET',
+        }).then(document => {
+          this.document = document
+        })
 
-    });
+      });
   }
 
-  canDeactivate() {
-
-    return true;
-  }
 }

@@ -47,28 +47,28 @@ class DocumentSerializer(serializers.ModelSerializer):
         fields = (
             'id',
             'download_url',
+            'attachment_file',
             'versions',
             'created'
         )
-
         read_only_fields = (
             'id',
             'versions',
             'created'
         )
+        extra_kwargs = {
+            'attachment_file': {'write_only': True},
+        }
 
 
 class SimpleDocumentSerializer(serializers.ModelSerializer):
-    user_id = serializers.PrimaryKeyRelatedField(queryset=User.objects.all(),
-                                                      source='user', required=False,
-                                                      write_only=True)
+
     class Meta:
         model = Document
         fields = (
             'id',
             'download_url',
             'created',
-            'user_id'
         )
 
         read_only_fields = (

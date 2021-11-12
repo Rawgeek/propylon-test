@@ -1,5 +1,5 @@
 export class NoSelection {
-    constructor() {
-      this.message = "Please select a document.";
-    }
+  constructor() {
+    this.message = "Please select a document.";
   }
+}
