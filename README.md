@@ -1,6 +1,7 @@
-# Propylon Technical Assesment
+# Technical Assesment
 
 Web application that allows users to store and later retrieve files at a specified URL.
+[Technical Assessment.docx](Documentation)
 
 ## Setup
 ```
